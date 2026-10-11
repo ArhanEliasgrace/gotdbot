@@ -13,13 +13,13 @@ func main() {
 	apiHash := ""
 	botToken := ""
 
-	bot, err := gotdbot.NewClient(apiID, apiHash, botToken, &gotdbot.ClientOpts{LibraryPath: "./libtdjson.so.1.8.67"})
+	bot, err := gotdbot.NewClient(apiID, apiHash, botToken, &gotdbot.ClientOpts{LibraryPath: "./libtdjson.so.1.8.68"})
 	if err != nil {
 		panic(err)
 	}
 
 	bot.OnCommand("start", func(c *gotdbot.Client, u *gotdbot.Message) error {
-		_, err := c.SendTextMessage(u.ChatId, "Hello! I am a conversation bot powered by gotdbot "+gotdbot.Version+". What's your name?", &gotdbot.SendTextMessageOpts{ReplyToMessageID: u.Id})
+		_, err := c.SendMessage(u.ChatId, "Hello! I am a conversation bot powered by gotdbot "+gotdbot.Version+". What's your name?", &gotdbot.SendMessageOpts{ReplyToMessageID: u.Id})
 		if err != nil {
 			log.Printf("Error sending message: %v", err)
 			return err
@@ -38,7 +38,7 @@ func main() {
 		}
 
 		text := res.GetText()
-		_, err = c.SendTextMessage(u.ChatId, "Hello "+text+"!", &gotdbot.SendTextMessageOpts{ReplyToMessageID: res.Id})
+		_, err = c.SendMessage(u.ChatId, "Hello "+text+"!", &gotdbot.SendMessageOpts{ReplyToMessageID: res.Id})
 		return err
 	})
 

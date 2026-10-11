@@ -369,10 +369,10 @@ func (c *Chat) EditForumTopic(client *Client, forumTopicId int32, iconCustomEmoj
 	return client.EditForumTopic(c.Id, forumTopicId, iconCustomEmojiId, name, opts)
 }
 
-// EditMessageCaption Edits the message content caption. Returns the edited message after the edit is completed on the server side
-// It is a helper method for Client.EditMessageCaption
-func (c *Chat) EditMessageCaption(client *Client, messageId int64, opts *EditMessageCaptionOpts) (*Message, error) {
-	return client.EditMessageCaption(c.Id, messageId, opts)
+// EditMessageCaptionText Edits the message content caption. Returns the edited message after the edit is completed on the server side
+// It is a helper method for Client.EditMessageCaptionText
+func (c *Chat) EditMessageCaptionText(client *Client, messageId int64, opts *EditMessageCaptionTextOpts) (*Message, error) {
+	return client.EditMessageCaptionText(c.Id, messageId, opts)
 }
 
 // EditMessageChecklist Edits the message content of a checklist. Returns the edited message after the edit is completed on the server side
@@ -405,10 +405,10 @@ func (c *Chat) EditMessageSchedulingState(client *Client, messageId int64, opts 
 	return client.EditMessageSchedulingState(c.Id, messageId, opts)
 }
 
-// EditMessageText Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
-// It is a helper method for Client.EditMessageText
-func (c *Chat) EditMessageText(client *Client, inputMessageContent InputMessageContent, messageId int64, opts *EditMessageTextOpts) (*Message, error) {
-	return client.EditMessageText(c.Id, inputMessageContent, messageId, opts)
+// EditMessageTextContent Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+// It is a helper method for Client.EditMessageTextContent
+func (c *Chat) EditMessageTextContent(client *Client, inputMessageContent InputMessageContent, messageId int64, opts *EditMessageTextContentOpts) (*Message, error) {
+	return client.EditMessageTextContent(c.Id, inputMessageContent, messageId, opts)
 }
 
 // ForwardMessages Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
@@ -1149,7 +1149,7 @@ func (c *Chat) ReplaceVideoRtmpUrl(client *Client) (*RtmpUrl, error) {
 	return client.ReplaceVideoChatRtmpUrl(c.Id)
 }
 
-// Report Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
+// Report Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, if chat.can_be_reported, or if messageProperties.can_report_chat
 // It is a helper method for Client.ReportChat
 func (c *Chat) Report(client *Client, messageIds []int64, optionId []byte, text string) (ReportChatResult, error) {
 	return client.ReportChat(c.Id, messageIds, optionId, text)
@@ -1251,10 +1251,10 @@ func (c *Chat) SendInlineQueryResultMessage(client *Client, queryId int64, resul
 	return client.SendInlineQueryResultMessage(c.Id, queryId, resultId, opts)
 }
 
-// SendMessage Sends a message. Returns the sent message
-// It is a helper method for Client.SendMessage
-func (c *Chat) SendMessage(client *Client, inputMessageContent InputMessageContent, opts *SendMessageOpts) (*Message, error) {
-	return client.SendMessage(c.Id, inputMessageContent, opts)
+// SendMessageContent Sends a message. Returns the sent message
+// It is a helper method for Client.SendMessageContent
+func (c *Chat) SendMessageContent(client *Client, inputMessageContent InputMessageContent, opts *SendMessageContentOpts) (*Message, error) {
+	return client.SendMessageContent(c.Id, inputMessageContent, opts)
 }
 
 // SendMessageAlbum Sends 2-10 messages grouped together into an album. Currently, only audio, document, photo and video messages can be grouped into an album.
@@ -1803,6 +1803,12 @@ func (m *Message) AddPollOption(client *Client, option *InputPollOption) error {
 	return client.AddPollOption(m.ChatId, m.Id, option)
 }
 
+// AnswerTonConnectRequest Sends an answer for a request received through TON Connect
+// It is a helper method for Client.AnswerTonConnectRequest
+func (m *Message) AnswerTonConnectRequest(client *Client, body []byte, sessionId int64, traceId string) error {
+	return client.AnswerTonConnectRequest(body, m.Id, sessionId, traceId)
+}
+
 // ApproveSuggestedPost Approves a suggested post in a channel direct messages chat
 // It is a helper method for Client.ApproveSuggestedPost
 func (m *Message) ApproveSuggestedPost(client *Client, sendDate int32) error {
@@ -1813,6 +1819,12 @@ func (m *Message) ApproveSuggestedPost(client *Client, sendDate int32) error {
 // It is a helper method for Client.BlockMessageSenderFromReplies
 func (m *Message) BlockSenderFromReplies(client *Client, opts *BlockMessageSenderFromRepliesOpts) error {
 	return client.BlockMessageSenderFromReplies(m.Id, opts)
+}
+
+// ClaimTonConnectRequest Claims a request received through TON Connect for processing on this device
+// It is a helper method for Client.ClaimTonConnectRequest
+func (m *Message) ClaimTonConnectRequest(client *Client, dappRequestId string, sessionId int64, opts *ClaimTonConnectRequestOpts) error {
+	return client.ClaimTonConnectRequest(dappRequestId, m.Id, sessionId, opts)
 }
 
 // ClickAnimatedEmoji Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played
@@ -1905,6 +1917,12 @@ func (m *Message) EditBusinessText(client *Client, businessConnectionId string, 
 	return client.EditBusinessMessageText(businessConnectionId, m.ChatId, inputMessageContent, m.Id, opts)
 }
 
+// EditCaptionText Edits the message content caption. Returns the edited message after the edit is completed on the server side
+// It is a helper method for Client.EditMessageCaptionText
+func (m *Message) EditCaptionText(client *Client, opts *EditMessageCaptionTextOpts) (*Message, error) {
+	return client.EditMessageCaptionText(m.ChatId, m.Id, opts)
+}
+
 // EditChecklist Edits the message content of a checklist. Returns the edited message after the edit is completed on the server side
 // It is a helper method for Client.EditMessageChecklist
 func (m *Message) EditChecklist(client *Client, checklist *InputChecklist, opts *EditMessageChecklistOpts) (*Message, error) {
@@ -1923,16 +1941,16 @@ func (m *Message) EditMedia(client *Client, inputMessageContent InputMessageCont
 	return client.EditMessageMedia(m.ChatId, inputMessageContent, m.Id, opts)
 }
 
-// EditReplyMarkup Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
-// It is a helper method for Client.EditMessageReplyMarkup
-func (m *Message) EditReplyMarkup(client *Client, opts *EditMessageReplyMarkupOpts) (*Message, error) {
-	return client.EditMessageReplyMarkup(m.ChatId, m.Id, opts)
-}
-
 // EditSchedulingState Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
 // It is a helper method for Client.EditMessageSchedulingState
 func (m *Message) EditSchedulingState(client *Client, opts *EditMessageSchedulingStateOpts) error {
 	return client.EditMessageSchedulingState(m.ChatId, m.Id, opts)
+}
+
+// EditTextContent Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+// It is a helper method for Client.EditMessageTextContent
+func (m *Message) EditTextContent(client *Client, inputMessageContent InputMessageContent, opts *EditMessageTextContentOpts) (*Message, error) {
+	return client.EditMessageTextContent(m.ChatId, inputMessageContent, m.Id, opts)
 }
 
 // EditQuickReply Asynchronously edits the text, media or caption of a quick reply message. Use quickReplyMessage.can_be_edited to check whether a message can be edited.
@@ -2313,6 +2331,12 @@ func (u *User) CreatePrivateChat(client *Client, opts *CreatePrivateChatOpts) (*
 	return client.CreatePrivateChat(u.Id, opts)
 }
 
+// CreateTonWallet Creates a TON wallet for the specified regular user; can be used only if getOption("can_use_ton_wallet"). The current user must have positive TON wallet balance
+// It is a helper method for Client.CreateUserTonWallet
+func (u *User) CreateTonWallet(client *Client) (*UserTonWalletAddress, error) {
+	return client.CreateUserTonWallet(u.Id)
+}
+
 // EditStarSubscription Cancels or re-enables Telegram Star subscription for a user; for bots only
 // It is a helper method for Client.EditUserStarSubscription
 func (u *User) EditStarSubscription(client *Client, telegramPaymentChargeId string, opts *EditUserStarSubscriptionOpts) error {
@@ -2443,6 +2467,12 @@ func (u *User) SavePreparedInlineMessage(client *Client, chatTypes *TargetChatTy
 // It is a helper method for Client.SavePreparedKeyboardButton
 func (u *User) SavePreparedKeyboardButton(client *Client, button *KeyboardButton) (*Text, error) {
 	return client.SavePreparedKeyboardButton(button, u.Id)
+}
+
+// SendTonWalletTransfer Sends a cryptocurrency from the user's TON wallet; can be used only if getOption("can_use_ton_wallet")
+// It is a helper method for Client.SendTonWalletTransfer
+func (u *User) SendTonWalletTransfer(client *Client, address string, amount int64, comment string, gaslessTransferData []byte, regularTransferData []byte, sendingId int32, opts *SendTonWalletTransferOpts) (*TonWalletTransferResult, error) {
+	return client.SendTonWalletTransfer(address, amount, comment, gaslessTransferData, regularTransferData, sendingId, u.Id, opts)
 }
 
 // SetChatMemberTag Changes the tag or custom title of a chat member; requires can_manage_tags administrator right to change tag of other users; for basic groups and supergroups only

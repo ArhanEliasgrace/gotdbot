@@ -3,6 +3,7 @@
 
 package gotdbot
 
+import "bytes"
 import "encoding/json"
 import "fmt"
 
@@ -13,7 +14,7 @@ type TlObject interface {
 
 type tlFunction interface {
 	TlObject
-	setExtra(extra string)
+	isFunction()
 }
 
 // ActiveStoryState Describes state of active stories posted by a chat
@@ -27,6 +28,9 @@ type ActiveStoryState interface {
 
 // UnmarshalActiveStoryState unmarshals the JSON into the correct concrete implementation of ActiveStoryState
 func UnmarshalActiveStoryState(data []byte) (ActiveStoryState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -68,6 +72,9 @@ type AffiliateProgramSortOrder interface {
 
 // UnmarshalAffiliateProgramSortOrder unmarshals the JSON into the correct concrete implementation of AffiliateProgramSortOrder
 func UnmarshalAffiliateProgramSortOrder(data []byte) (AffiliateProgramSortOrder, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -109,6 +116,9 @@ type AffiliateType interface {
 
 // UnmarshalAffiliateType unmarshals the JSON into the correct concrete implementation of AffiliateType
 func UnmarshalAffiliateType(data []byte) (AffiliateType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -149,6 +159,9 @@ type AuctionState interface {
 
 // UnmarshalAuctionState unmarshals the JSON into the correct concrete implementation of AuctionState
 func UnmarshalAuctionState(data []byte) (AuctionState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -191,6 +204,9 @@ type AuthenticationCodeType interface {
 
 // UnmarshalAuthenticationCodeType unmarshals the JSON into the correct concrete implementation of AuthenticationCodeType
 func UnmarshalAuthenticationCodeType(data []byte) (AuthenticationCodeType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -284,6 +300,9 @@ type AuthorizationState interface {
 
 // UnmarshalAuthorizationState unmarshals the JSON into the correct concrete implementation of AuthorizationState
 func UnmarshalAuthorizationState(data []byte) (AuthorizationState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -386,6 +405,9 @@ type AutosaveSettingsScope interface {
 
 // UnmarshalAutosaveSettingsScope unmarshals the JSON into the correct concrete implementation of AutosaveSettingsScope
 func UnmarshalAutosaveSettingsScope(data []byte) (AutosaveSettingsScope, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -433,6 +455,9 @@ type BackgroundFill interface {
 
 // UnmarshalBackgroundFill unmarshals the JSON into the correct concrete implementation of BackgroundFill
 func UnmarshalBackgroundFill(data []byte) (BackgroundFill, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -475,6 +500,9 @@ type BackgroundType interface {
 
 // UnmarshalBackgroundType unmarshals the JSON into the correct concrete implementation of BackgroundType
 func UnmarshalBackgroundType(data []byte) (BackgroundType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -521,6 +549,9 @@ type BlockList interface {
 
 // UnmarshalBlockList unmarshals the JSON into the correct concrete implementation of BlockList
 func UnmarshalBlockList(data []byte) (BlockList, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -560,6 +591,9 @@ type BotCommandScope interface {
 
 // UnmarshalBotCommandScope unmarshals the JSON into the correct concrete implementation of BotCommandScope
 func UnmarshalBotCommandScope(data []byte) (BotCommandScope, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -626,6 +660,9 @@ type BotWriteAccessAllowReason interface {
 
 // UnmarshalBotWriteAccessAllowReason unmarshals the JSON into the correct concrete implementation of BotWriteAccessAllowReason
 func UnmarshalBotWriteAccessAllowReason(data []byte) (BotWriteAccessAllowReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -675,6 +712,9 @@ type BuiltInTheme interface {
 
 // UnmarshalBuiltInTheme unmarshals the JSON into the correct concrete implementation of BuiltInTheme
 func UnmarshalBuiltInTheme(data []byte) (BuiltInTheme, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -728,6 +768,9 @@ type BusinessAwayMessageSchedule interface {
 
 // UnmarshalBusinessAwayMessageSchedule unmarshals the JSON into the correct concrete implementation of BusinessAwayMessageSchedule
 func UnmarshalBusinessAwayMessageSchedule(data []byte) (BusinessAwayMessageSchedule, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -777,6 +820,9 @@ type BusinessFeature interface {
 
 // UnmarshalBusinessFeature unmarshals the JSON into the correct concrete implementation of BusinessFeature
 func UnmarshalBusinessFeature(data []byte) (BusinessFeature, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -868,6 +914,9 @@ type ButtonStyle interface {
 
 // UnmarshalButtonStyle unmarshals the JSON into the correct concrete implementation of ButtonStyle
 func UnmarshalButtonStyle(data []byte) (ButtonStyle, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -921,6 +970,9 @@ type CallbackQueryPayload interface {
 
 // UnmarshalCallbackQueryPayload unmarshals the JSON into the correct concrete implementation of CallbackQueryPayload
 func UnmarshalCallbackQueryPayload(data []byte) (CallbackQueryPayload, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -965,6 +1017,9 @@ type CallDiscardReason interface {
 
 // UnmarshalCallDiscardReason unmarshals the JSON into the correct concrete implementation of CallDiscardReason
 func UnmarshalCallDiscardReason(data []byte) (CallDiscardReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1030,6 +1085,9 @@ type CallProblem interface {
 
 // UnmarshalCallProblem unmarshals the JSON into the correct concrete implementation of CallProblem
 func UnmarshalCallProblem(data []byte) (CallProblem, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1106,6 +1164,9 @@ type CallServerType interface {
 
 // UnmarshalCallServerType unmarshals the JSON into the correct concrete implementation of CallServerType
 func UnmarshalCallServerType(data []byte) (CallServerType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1144,6 +1205,9 @@ type CallState interface {
 
 // UnmarshalCallState unmarshals the JSON into the correct concrete implementation of CallState
 func UnmarshalCallState(data []byte) (CallState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1207,6 +1271,9 @@ type CanPostStoryResult interface {
 
 // UnmarshalCanPostStoryResult unmarshals the JSON into the correct concrete implementation of CanPostStoryResult
 func UnmarshalCanPostStoryResult(data []byte) (CanPostStoryResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1271,6 +1338,9 @@ type CanSendGiftResult interface {
 
 // UnmarshalCanSendGiftResult unmarshals the JSON into the correct concrete implementation of CanSendGiftResult
 func UnmarshalCanSendGiftResult(data []byte) (CanSendGiftResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1307,6 +1377,9 @@ type CanSendMessageToUserResult interface {
 
 // UnmarshalCanSendMessageToUserResult unmarshals the JSON into the correct concrete implementation of CanSendMessageToUserResult
 func UnmarshalCanSendMessageToUserResult(data []byte) (CanSendMessageToUserResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1355,6 +1428,9 @@ type CanTransferOwnershipResult interface {
 
 // UnmarshalCanTransferOwnershipResult unmarshals the JSON into the correct concrete implementation of CanTransferOwnershipResult
 func UnmarshalCanTransferOwnershipResult(data []byte) (CanTransferOwnershipResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1414,6 +1490,9 @@ type ChatAction interface {
 
 // UnmarshalChatAction unmarshals the JSON into the correct concrete implementation of ChatAction
 func UnmarshalChatAction(data []byte) (ChatAction, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1530,6 +1609,9 @@ type ChatActionBar interface {
 
 // UnmarshalChatActionBar unmarshals the JSON into the correct concrete implementation of ChatActionBar
 func UnmarshalChatActionBar(data []byte) (ChatActionBar, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1588,6 +1670,9 @@ type ChatAvailableReactions interface {
 
 // UnmarshalChatAvailableReactions unmarshals the JSON into the correct concrete implementation of ChatAvailableReactions
 func UnmarshalChatAvailableReactions(data []byte) (ChatAvailableReactions, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1623,6 +1708,9 @@ type ChatBoostSource interface {
 
 // UnmarshalChatBoostSource unmarshals the JSON into the correct concrete implementation of ChatBoostSource
 func UnmarshalChatBoostSource(data []byte) (ChatBoostSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -1714,6 +1802,9 @@ type ChatEventAction interface {
 
 // UnmarshalChatEventAction unmarshals the JSON into the correct concrete implementation of ChatEventAction
 func UnmarshalChatEventAction(data []byte) (ChatEventAction, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2055,6 +2146,9 @@ type ChatJoinRequestResult interface {
 
 // UnmarshalChatJoinRequestResult unmarshals the JSON into the correct concrete implementation of ChatJoinRequestResult
 func UnmarshalChatJoinRequestResult(data []byte) (ChatJoinRequestResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2097,6 +2191,9 @@ type ChatJoinResult interface {
 
 // UnmarshalChatJoinResult unmarshals the JSON into the correct concrete implementation of ChatJoinResult
 func UnmarshalChatJoinResult(data []byte) (ChatJoinResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2144,6 +2241,9 @@ type ChatList interface {
 
 // UnmarshalChatList unmarshals the JSON into the correct concrete implementation of ChatList
 func UnmarshalChatList(data []byte) (ChatList, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2189,6 +2289,9 @@ type ChatMembersFilter interface {
 
 // UnmarshalChatMembersFilter unmarshals the JSON into the correct concrete implementation of ChatMembersFilter
 func UnmarshalChatMembersFilter(data []byte) (ChatMembersFilter, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2257,6 +2360,9 @@ type ChatMemberStatus interface {
 
 // UnmarshalChatMemberStatus unmarshals the JSON into the correct concrete implementation of ChatMemberStatus
 func UnmarshalChatMemberStatus(data []byte) (ChatMemberStatus, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2315,6 +2421,9 @@ type ChatPhotoStickerType interface {
 
 // UnmarshalChatPhotoStickerType unmarshals the JSON into the correct concrete implementation of ChatPhotoStickerType
 func UnmarshalChatPhotoStickerType(data []byte) (ChatPhotoStickerType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2352,6 +2461,9 @@ type ChatRevenueTransactionType interface {
 
 // UnmarshalChatRevenueTransactionType unmarshals the JSON into the correct concrete implementation of ChatRevenueTransactionType
 func UnmarshalChatRevenueTransactionType(data []byte) (ChatRevenueTransactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2404,6 +2516,9 @@ type ChatSource interface {
 
 // UnmarshalChatSource unmarshals the JSON into the correct concrete implementation of ChatSource
 func UnmarshalChatSource(data []byte) (ChatSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2438,6 +2553,9 @@ type ChatStatistics interface {
 
 // UnmarshalChatStatistics unmarshals the JSON into the correct concrete implementation of ChatStatistics
 func UnmarshalChatStatistics(data []byte) (ChatStatistics, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2472,6 +2590,9 @@ type ChatStatisticsObjectType interface {
 
 // UnmarshalChatStatisticsObjectType unmarshals the JSON into the correct concrete implementation of ChatStatisticsObjectType
 func UnmarshalChatStatisticsObjectType(data []byte) (ChatStatisticsObjectType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2506,6 +2627,9 @@ type ChatTheme interface {
 
 // UnmarshalChatTheme unmarshals the JSON into the correct concrete implementation of ChatTheme
 func UnmarshalChatTheme(data []byte) (ChatTheme, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2542,6 +2666,9 @@ type ChatType interface {
 
 // UnmarshalChatType unmarshals the JSON into the correct concrete implementation of ChatType
 func UnmarshalChatType(data []byte) (ChatType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2592,6 +2719,9 @@ type CheckChatUsernameResult interface {
 
 // UnmarshalCheckChatUsernameResult unmarshals the JSON into the correct concrete implementation of CheckChatUsernameResult
 func UnmarshalCheckChatUsernameResult(data []byte) (CheckChatUsernameResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2651,6 +2781,9 @@ type CheckStickerSetNameResult interface {
 
 // UnmarshalCheckStickerSetNameResult unmarshals the JSON into the correct concrete implementation of CheckStickerSetNameResult
 func UnmarshalCheckStickerSetNameResult(data []byte) (CheckStickerSetNameResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2691,6 +2824,9 @@ type CollectibleItemType interface {
 
 // UnmarshalCollectibleItemType unmarshals the JSON into the correct concrete implementation of CollectibleItemType
 func UnmarshalCollectibleItemType(data []byte) (CollectibleItemType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2728,6 +2864,9 @@ type CommunityMemberStatus interface {
 
 // UnmarshalCommunityMemberStatus unmarshals the JSON into the correct concrete implementation of CommunityMemberStatus
 func UnmarshalCommunityMemberStatus(data []byte) (CommunityMemberStatus, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2783,6 +2922,9 @@ type ConnectionState interface {
 
 // UnmarshalConnectionState unmarshals the JSON into the correct concrete implementation of ConnectionState
 func UnmarshalConnectionState(data []byte) (ConnectionState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2837,6 +2979,9 @@ type CraftGiftResult interface {
 
 // UnmarshalCraftGiftResult unmarshals the JSON into the correct concrete implementation of CraftGiftResult
 func UnmarshalCraftGiftResult(data []byte) (CraftGiftResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2883,6 +3028,9 @@ type DateTimeFormattingType interface {
 
 // UnmarshalDateTimeFormattingType unmarshals the JSON into the correct concrete implementation of DateTimeFormattingType
 func UnmarshalDateTimeFormattingType(data []byte) (DateTimeFormattingType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2918,6 +3066,9 @@ type DateTimePartPrecision interface {
 
 // UnmarshalDateTimePartPrecision unmarshals the JSON into the correct concrete implementation of DateTimePartPrecision
 func UnmarshalDateTimePartPrecision(data []byte) (DateTimePartPrecision, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -2968,6 +3119,9 @@ type DeviceToken interface {
 
 // UnmarshalDeviceToken unmarshals the JSON into the correct concrete implementation of DeviceToken
 func UnmarshalDeviceToken(data []byte) (DeviceToken, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3062,6 +3216,9 @@ type DiceStickers interface {
 
 // UnmarshalDiceStickers unmarshals the JSON into the correct concrete implementation of DiceStickers
 func UnmarshalDiceStickers(data []byte) (DiceStickers, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3097,6 +3254,9 @@ type DiffEntityType interface {
 
 // UnmarshalDiffEntityType unmarshals the JSON into the correct concrete implementation of DiffEntityType
 func UnmarshalDiffEntityType(data []byte) (DiffEntityType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3140,6 +3300,9 @@ type DraftMessageContent interface {
 
 // UnmarshalDraftMessageContent unmarshals the JSON into the correct concrete implementation of DraftMessageContent
 func UnmarshalDraftMessageContent(data []byte) (DraftMessageContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3193,6 +3356,9 @@ type EmailAddressAuthentication interface {
 
 // UnmarshalEmailAddressAuthentication unmarshals the JSON into the correct concrete implementation of EmailAddressAuthentication
 func UnmarshalEmailAddressAuthentication(data []byte) (EmailAddressAuthentication, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3233,6 +3399,9 @@ type EmailAddressResetState interface {
 
 // UnmarshalEmailAddressResetState unmarshals the JSON into the correct concrete implementation of EmailAddressResetState
 func UnmarshalEmailAddressResetState(data []byte) (EmailAddressResetState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3267,6 +3436,9 @@ type EmojiCategorySource interface {
 
 // UnmarshalEmojiCategorySource unmarshals the JSON into the correct concrete implementation of EmojiCategorySource
 func UnmarshalEmojiCategorySource(data []byte) (EmojiCategorySource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3303,6 +3475,9 @@ type EmojiCategoryType interface {
 
 // UnmarshalEmojiCategoryType unmarshals the JSON into the correct concrete implementation of EmojiCategoryType
 func UnmarshalEmojiCategoryType(data []byte) (EmojiCategoryType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3349,6 +3524,9 @@ type EmojiStatusType interface {
 
 // UnmarshalEmojiStatusType unmarshals the JSON into the correct concrete implementation of EmojiStatusType
 func UnmarshalEmojiStatusType(data []byte) (EmojiStatusType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3406,6 +3584,9 @@ type FileType interface {
 
 // UnmarshalFileType unmarshals the JSON into the correct concrete implementation of FileType
 func UnmarshalFileType(data []byte) (FileType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3578,6 +3759,9 @@ type FirebaseAuthenticationSettings interface {
 
 // UnmarshalFirebaseAuthenticationSettings unmarshals the JSON into the correct concrete implementation of FirebaseAuthenticationSettings
 func UnmarshalFirebaseAuthenticationSettings(data []byte) (FirebaseAuthenticationSettings, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3612,6 +3796,9 @@ type FirebaseDeviceVerificationParameters interface {
 
 // UnmarshalFirebaseDeviceVerificationParameters unmarshals the JSON into the correct concrete implementation of FirebaseDeviceVerificationParameters
 func UnmarshalFirebaseDeviceVerificationParameters(data []byte) (FirebaseDeviceVerificationParameters, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3647,6 +3834,9 @@ type GiftForResaleOrder interface {
 
 // UnmarshalGiftForResaleOrder unmarshals the JSON into the correct concrete implementation of GiftForResaleOrder
 func UnmarshalGiftForResaleOrder(data []byte) (GiftForResaleOrder, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3688,6 +3878,9 @@ type GiftPurchaseOfferState interface {
 
 // UnmarshalGiftPurchaseOfferState unmarshals the JSON into the correct concrete implementation of GiftPurchaseOfferState
 func UnmarshalGiftPurchaseOfferState(data []byte) (GiftPurchaseOfferState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3728,6 +3921,9 @@ type GiftResalePrice interface {
 
 // UnmarshalGiftResalePrice unmarshals the JSON into the correct concrete implementation of GiftResalePrice
 func UnmarshalGiftResalePrice(data []byte) (GiftResalePrice, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3762,6 +3958,9 @@ type GiftResaleResult interface {
 
 // UnmarshalGiftResaleResult unmarshals the JSON into the correct concrete implementation of GiftResaleResult
 func UnmarshalGiftResaleResult(data []byte) (GiftResaleResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3796,6 +3995,9 @@ type GiveawayInfo interface {
 
 // UnmarshalGiveawayInfo unmarshals the JSON into the correct concrete implementation of GiveawayInfo
 func UnmarshalGiveawayInfo(data []byte) (GiveawayInfo, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3833,6 +4035,9 @@ type GiveawayParticipantStatus interface {
 
 // UnmarshalGiveawayParticipantStatus unmarshals the JSON into the correct concrete implementation of GiveawayParticipantStatus
 func UnmarshalGiveawayParticipantStatus(data []byte) (GiveawayParticipantStatus, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3885,6 +4090,9 @@ type GiveawayPrize interface {
 
 // UnmarshalGiveawayPrize unmarshals the JSON into the correct concrete implementation of GiveawayPrize
 func UnmarshalGiveawayPrize(data []byte) (GiveawayPrize, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3919,6 +4127,9 @@ type GroupCallDataChannel interface {
 
 // UnmarshalGroupCallDataChannel unmarshals the JSON into the correct concrete implementation of GroupCallDataChannel
 func UnmarshalGroupCallDataChannel(data []byte) (GroupCallDataChannel, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -3954,6 +4165,9 @@ type GroupCallVideoQuality interface {
 
 // UnmarshalGroupCallVideoQuality unmarshals the JSON into the correct concrete implementation of GroupCallVideoQuality
 func UnmarshalGroupCallVideoQuality(data []byte) (GroupCallVideoQuality, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4003,6 +4217,9 @@ type InlineKeyboardButtonType interface {
 
 // UnmarshalInlineKeyboardButtonType unmarshals the JSON into the correct concrete implementation of InlineKeyboardButtonType
 func UnmarshalInlineKeyboardButtonType(data []byte) (InlineKeyboardButtonType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4101,6 +4318,9 @@ type InlineQueryResult interface {
 
 // UnmarshalInlineQueryResult unmarshals the JSON into the correct concrete implementation of InlineQueryResult
 func UnmarshalInlineQueryResult(data []byte) (InlineQueryResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4195,6 +4415,9 @@ type InlineQueryResultsButtonType interface {
 
 // UnmarshalInlineQueryResultsButtonType unmarshals the JSON into the correct concrete implementation of InlineQueryResultsButtonType
 func UnmarshalInlineQueryResultsButtonType(data []byte) (InlineQueryResultsButtonType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4230,6 +4453,9 @@ type InputBackground interface {
 
 // UnmarshalInputBackground unmarshals the JSON into the correct concrete implementation of InputBackground
 func UnmarshalInputBackground(data []byte) (InputBackground, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4270,6 +4496,9 @@ type InputCall interface {
 
 // UnmarshalInputCall unmarshals the JSON into the correct concrete implementation of InputCall
 func UnmarshalInputCall(data []byte) (InputCall, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4306,6 +4535,9 @@ type InputChatPhoto interface {
 
 // UnmarshalInputChatPhoto unmarshals the JSON into the correct concrete implementation of InputChatPhoto
 func UnmarshalInputChatPhoto(data []byte) (InputChatPhoto, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4352,6 +4584,9 @@ type InputChatTheme interface {
 
 // UnmarshalInputChatTheme unmarshals the JSON into the correct concrete implementation of InputChatTheme
 func UnmarshalInputChatTheme(data []byte) (InputChatTheme, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4388,6 +4623,9 @@ type InputCredentials interface {
 
 // UnmarshalInputCredentials unmarshals the JSON into the correct concrete implementation of InputCredentials
 func UnmarshalInputCredentials(data []byte) (InputCredentials, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4436,6 +4674,9 @@ type InputFile interface {
 
 // UnmarshalInputFile unmarshals the JSON into the correct concrete implementation of InputFile
 func UnmarshalInputFile(data []byte) (InputFile, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4482,6 +4723,9 @@ type InputGroupCall interface {
 
 // UnmarshalInputGroupCall unmarshals the JSON into the correct concrete implementation of InputGroupCall
 func UnmarshalInputGroupCall(data []byte) (InputGroupCall, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4526,6 +4770,9 @@ type InputInlineQueryResult interface {
 
 // UnmarshalInputInlineQueryResult unmarshals the JSON into the correct concrete implementation of InputInlineQueryResult
 func UnmarshalInputInlineQueryResult(data []byte) (InputInlineQueryResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4621,6 +4868,9 @@ type InputInvoice interface {
 
 // UnmarshalInputInvoice unmarshals the JSON into the correct concrete implementation of InputInvoice
 func UnmarshalInputInvoice(data []byte) (InputInvoice, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4682,6 +4932,9 @@ type InputMessageContent interface {
 
 // UnmarshalInputMessageContent unmarshals the JSON into the correct concrete implementation of InputMessageContent
 func UnmarshalInputMessageContent(data []byte) (InputMessageContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4844,6 +5097,9 @@ type InputMessageReplyTo interface {
 
 // UnmarshalInputMessageReplyTo unmarshals the JSON into the correct concrete implementation of InputMessageReplyTo
 func UnmarshalInputMessageReplyTo(data []byte) (InputMessageReplyTo, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -4912,6 +5168,9 @@ type InputPageBlock interface {
 
 // UnmarshalInputPageBlock unmarshals the JSON into the correct concrete implementation of InputPageBlock
 func UnmarshalInputPageBlock(data []byte) (InputPageBlock, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5078,6 +5337,9 @@ type InputPaidMediaType interface {
 
 // UnmarshalInputPaidMediaType unmarshals the JSON into the correct concrete implementation of InputPaidMediaType
 func UnmarshalInputPaidMediaType(data []byte) (InputPaidMediaType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5123,6 +5385,9 @@ type InputPassportElement interface {
 
 // UnmarshalInputPassportElement unmarshals the JSON into the correct concrete implementation of InputPassportElement
 func UnmarshalInputPassportElement(data []byte) (InputPassportElement, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5230,6 +5495,9 @@ type InputPassportElementErrorSource interface {
 
 // UnmarshalInputPassportElementErrorSource unmarshals the JSON into the correct concrete implementation of InputPassportElementErrorSource
 func UnmarshalInputPassportElementErrorSource(data []byte) (InputPassportElementErrorSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5313,6 +5581,9 @@ type InputPollMedia interface {
 
 // UnmarshalInputPollMedia unmarshals the JSON into the correct concrete implementation of InputPollMedia
 func UnmarshalInputPollMedia(data []byte) (InputPollMedia, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5389,6 +5660,9 @@ type InputPollType interface {
 
 // UnmarshalInputPollType unmarshals the JSON into the correct concrete implementation of InputPollType
 func UnmarshalInputPollType(data []byte) (InputPollType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5429,6 +5703,9 @@ type InputStoryAreaType interface {
 
 // UnmarshalInputStoryAreaType unmarshals the JSON into the correct concrete implementation of InputStoryAreaType
 func UnmarshalInputStoryAreaType(data []byte) (InputStoryAreaType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5499,6 +5776,9 @@ type InputStoryContent interface {
 
 // UnmarshalInputStoryContent unmarshals the JSON into the correct concrete implementation of InputStoryContent
 func UnmarshalInputStoryContent(data []byte) (InputStoryContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5575,6 +5855,8 @@ func UnmarshalInputStoryContent(data []byte) (InputStoryContent, error) {
 //   - InternalLinkTypeStoryAlbum
 //   - InternalLinkTypeTextCompositionStyle
 //   - InternalLinkTypeTheme
+//   - InternalLinkTypeTonConnect
+//   - InternalLinkTypeTonWalletTransfer
 //   - InternalLinkTypeUnknownDeepLink
 //   - InternalLinkTypeUpgradedGift
 //   - InternalLinkTypeUserPhoneNumber
@@ -5588,6 +5870,9 @@ type InternalLinkType interface {
 
 // UnmarshalInternalLinkType unmarshals the JSON into the correct concrete implementation of InternalLinkType
 func UnmarshalInternalLinkType(data []byte) (InternalLinkType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -5901,6 +6186,18 @@ func UnmarshalInternalLinkType(data []byte) (InternalLinkType, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "internalLinkTypeTonConnect":
+		var obj InternalLinkTypeTonConnect
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "internalLinkTypeTonWalletTransfer":
+		var obj InternalLinkTypeTonWalletTransfer
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "internalLinkTypeUnknownDeepLink":
 		var obj InternalLinkTypeUnknownDeepLink
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -5954,6 +6251,9 @@ type InviteGroupCallParticipantResult interface {
 
 // UnmarshalInviteGroupCallParticipantResult unmarshals the JSON into the correct concrete implementation of InviteGroupCallParticipantResult
 func UnmarshalInviteGroupCallParticipantResult(data []byte) (InviteGroupCallParticipantResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6001,6 +6301,9 @@ type InviteLinkChatType interface {
 
 // UnmarshalInviteLinkChatType unmarshals the JSON into the correct concrete implementation of InviteLinkChatType
 func UnmarshalInviteLinkChatType(data []byte) (InviteLinkChatType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6045,6 +6348,9 @@ type JsonValue interface {
 
 // UnmarshalJsonValue unmarshals the JSON into the correct concrete implementation of JsonValue
 func UnmarshalJsonValue(data []byte) (JsonValue, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6103,6 +6409,9 @@ type KeyboardButtonSource interface {
 
 // UnmarshalKeyboardButtonSource unmarshals the JSON into the correct concrete implementation of KeyboardButtonSource
 func UnmarshalKeyboardButtonSource(data []byte) (KeyboardButtonSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6143,6 +6452,9 @@ type KeyboardButtonType interface {
 
 // UnmarshalKeyboardButtonType unmarshals the JSON into the correct concrete implementation of KeyboardButtonType
 func UnmarshalKeyboardButtonType(data []byte) (KeyboardButtonType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6214,6 +6526,9 @@ type LanguagePackStringValue interface {
 
 // UnmarshalLanguagePackStringValue unmarshals the JSON into the correct concrete implementation of LanguagePackStringValue
 func UnmarshalLanguagePackStringValue(data []byte) (LanguagePackStringValue, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6254,6 +6569,9 @@ type LinkPreviewAlbumMedia interface {
 
 // UnmarshalLinkPreviewAlbumMedia unmarshals the JSON into the correct concrete implementation of LinkPreviewAlbumMedia
 func UnmarshalLinkPreviewAlbumMedia(data []byte) (LinkPreviewAlbumMedia, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6326,6 +6644,9 @@ type LinkPreviewType interface {
 
 // UnmarshalLinkPreviewType unmarshals the JSON into the correct concrete implementation of LinkPreviewType
 func UnmarshalLinkPreviewType(data []byte) (LinkPreviewType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6588,6 +6909,9 @@ type LoginUrlInfo interface {
 
 // UnmarshalLoginUrlInfo unmarshals the JSON into the correct concrete implementation of LoginUrlInfo
 func UnmarshalLoginUrlInfo(data []byte) (LoginUrlInfo, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6623,6 +6947,9 @@ type LogStream interface {
 
 // UnmarshalLogStream unmarshals the JSON into the correct concrete implementation of LogStream
 func UnmarshalLogStream(data []byte) (LogStream, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6665,6 +6992,9 @@ type MaskPoint interface {
 
 // UnmarshalMaskPoint unmarshals the JSON into the correct concrete implementation of MaskPoint
 func UnmarshalMaskPoint(data []byte) (MaskPoint, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -6793,6 +7123,8 @@ func UnmarshalMaskPoint(data []byte) (MaskPoint, error) {
 //   - MessageSuggestedPostRefunded
 //   - MessageSupergroupChatCreate
 //   - MessageText
+//   - MessageTonConnectRequest
+//   - MessageTonWalletTransfer
 //   - MessageUnsupported
 //   - MessageUpgradedGift
 //   - MessageUpgradedGiftPurchaseOffer
@@ -6814,6 +7146,9 @@ type MessageContent interface {
 
 // UnmarshalMessageContent unmarshals the JSON into the correct concrete implementation of MessageContent
 func UnmarshalMessageContent(data []byte) (MessageContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7367,6 +7702,18 @@ func UnmarshalMessageContent(data []byte) (MessageContent, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "messageTonConnectRequest":
+		var obj MessageTonConnectRequest
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "messageTonWalletTransfer":
+		var obj MessageTonWalletTransfer
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "messageUnsupported":
 		var obj MessageUnsupported
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -7466,6 +7813,9 @@ type MessageEffectType interface {
 
 // UnmarshalMessageEffectType unmarshals the JSON into the correct concrete implementation of MessageEffectType
 func UnmarshalMessageEffectType(data []byte) (MessageEffectType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7501,6 +7851,9 @@ type MessageFileType interface {
 
 // UnmarshalMessageFileType unmarshals the JSON into the correct concrete implementation of MessageFileType
 func UnmarshalMessageFileType(data []byte) (MessageFileType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7543,6 +7896,9 @@ type MessageOrigin interface {
 
 // UnmarshalMessageOrigin unmarshals the JSON into the correct concrete implementation of MessageOrigin
 func UnmarshalMessageOrigin(data []byte) (MessageOrigin, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7592,6 +7948,9 @@ type MessageReadDate interface {
 
 // UnmarshalMessageReadDate unmarshals the JSON into the correct concrete implementation of MessageReadDate
 func UnmarshalMessageReadDate(data []byte) (MessageReadDate, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7644,6 +8003,9 @@ type MessageReplyTo interface {
 
 // UnmarshalMessageReplyTo unmarshals the JSON into the correct concrete implementation of MessageReplyTo
 func UnmarshalMessageReplyTo(data []byte) (MessageReplyTo, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7679,6 +8041,9 @@ type MessageSchedulingState interface {
 
 // UnmarshalMessageSchedulingState unmarshals the JSON into the correct concrete implementation of MessageSchedulingState
 func UnmarshalMessageSchedulingState(data []byte) (MessageSchedulingState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7719,6 +8084,9 @@ type MessageSelfDestructType interface {
 
 // UnmarshalMessageSelfDestructType unmarshals the JSON into the correct concrete implementation of MessageSelfDestructType
 func UnmarshalMessageSelfDestructType(data []byte) (MessageSelfDestructType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7753,6 +8121,9 @@ type MessageSender interface {
 
 // UnmarshalMessageSender unmarshals the JSON into the correct concrete implementation of MessageSender
 func UnmarshalMessageSender(data []byte) (MessageSender, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7787,6 +8158,9 @@ type MessageSendingState interface {
 
 // UnmarshalMessageSendingState unmarshals the JSON into the correct concrete implementation of MessageSendingState
 func UnmarshalMessageSendingState(data []byte) (MessageSendingState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7830,6 +8204,9 @@ type MessageSource interface {
 
 // UnmarshalMessageSource unmarshals the JSON into the correct concrete implementation of MessageSource
 func UnmarshalMessageSource(data []byte) (MessageSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7920,6 +8297,9 @@ type MessageTopic interface {
 
 // UnmarshalMessageTopic unmarshals the JSON into the correct concrete implementation of MessageTopic
 func UnmarshalMessageTopic(data []byte) (MessageTopic, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -7966,6 +8346,9 @@ type NetworkStatisticsEntry interface {
 
 // UnmarshalNetworkStatisticsEntry unmarshals the JSON into the correct concrete implementation of NetworkStatisticsEntry
 func UnmarshalNetworkStatisticsEntry(data []byte) (NetworkStatisticsEntry, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8003,6 +8386,9 @@ type NetworkType interface {
 
 // UnmarshalNetworkType unmarshals the JSON into the correct concrete implementation of NetworkType
 func UnmarshalNetworkType(data []byte) (NetworkType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8057,6 +8443,9 @@ type NotificationGroupType interface {
 
 // UnmarshalNotificationGroupType unmarshals the JSON into the correct concrete implementation of NotificationGroupType
 func UnmarshalNotificationGroupType(data []byte) (NotificationGroupType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8104,6 +8493,9 @@ type NotificationSettingsScope interface {
 
 // UnmarshalNotificationSettingsScope unmarshals the JSON into the correct concrete implementation of NotificationSettingsScope
 func UnmarshalNotificationSettingsScope(data []byte) (NotificationSettingsScope, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8146,6 +8538,9 @@ type NotificationType interface {
 
 // UnmarshalNotificationType unmarshals the JSON into the correct concrete implementation of NotificationType
 func UnmarshalNotificationType(data []byte) (NotificationType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8194,6 +8589,9 @@ type OptionValue interface {
 
 // UnmarshalOptionValue unmarshals the JSON into the correct concrete implementation of OptionValue
 func UnmarshalOptionValue(data []byte) (OptionValue, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8274,6 +8672,9 @@ type PageBlock interface {
 
 // UnmarshalPageBlock unmarshals the JSON into the correct concrete implementation of PageBlock
 func UnmarshalPageBlock(data []byte) (PageBlock, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8513,6 +8914,9 @@ type PageBlockHorizontalAlignment interface {
 
 // UnmarshalPageBlockHorizontalAlignment unmarshals the JSON into the correct concrete implementation of PageBlockHorizontalAlignment
 func UnmarshalPageBlockHorizontalAlignment(data []byte) (PageBlockHorizontalAlignment, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8554,6 +8958,9 @@ type PageBlockVerticalAlignment interface {
 
 // UnmarshalPageBlockVerticalAlignment unmarshals the JSON into the correct concrete implementation of PageBlockVerticalAlignment
 func UnmarshalPageBlockVerticalAlignment(data []byte) (PageBlockVerticalAlignment, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8596,6 +9003,9 @@ type PaidMedia interface {
 
 // UnmarshalPaidMedia unmarshals the JSON into the correct concrete implementation of PaidMedia
 func UnmarshalPaidMedia(data []byte) (PaidMedia, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8643,6 +9053,9 @@ type PaidReactionType interface {
 
 // UnmarshalPaidReactionType unmarshals the JSON into the correct concrete implementation of PaidReactionType
 func UnmarshalPaidReactionType(data []byte) (PaidReactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8694,6 +9107,9 @@ type PassportElement interface {
 
 // UnmarshalPassportElement unmarshals the JSON into the correct concrete implementation of PassportElement
 func UnmarshalPassportElement(data []byte) (PassportElement, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8801,6 +9217,9 @@ type PassportElementErrorSource interface {
 
 // UnmarshalPassportElementErrorSource unmarshals the JSON into the correct concrete implementation of PassportElementErrorSource
 func UnmarshalPassportElementErrorSource(data []byte) (PassportElementErrorSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8888,6 +9307,9 @@ type PassportElementType interface {
 
 // UnmarshalPassportElementType unmarshals the JSON into the correct concrete implementation of PassportElementType
 func UnmarshalPassportElementType(data []byte) (PassportElementType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -8989,6 +9411,9 @@ type PaymentFormType interface {
 
 // UnmarshalPaymentFormType unmarshals the JSON into the correct concrete implementation of PaymentFormType
 func UnmarshalPaymentFormType(data []byte) (PaymentFormType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9030,6 +9455,9 @@ type PaymentProvider interface {
 
 // UnmarshalPaymentProvider unmarshals the JSON into the correct concrete implementation of PaymentProvider
 func UnmarshalPaymentProvider(data []byte) (PaymentProvider, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9070,6 +9498,9 @@ type PaymentReceiptType interface {
 
 // UnmarshalPaymentReceiptType unmarshals the JSON into the correct concrete implementation of PaymentReceiptType
 func UnmarshalPaymentReceiptType(data []byte) (PaymentReceiptType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9105,6 +9536,9 @@ type PhoneNumberCodeType interface {
 
 // UnmarshalPhoneNumberCodeType unmarshals the JSON into the correct concrete implementation of PhoneNumberCodeType
 func UnmarshalPhoneNumberCodeType(data []byte) (PhoneNumberCodeType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9152,6 +9586,9 @@ type PollMedia interface {
 
 // UnmarshalPollMedia unmarshals the JSON into the correct concrete implementation of PollMedia
 func UnmarshalPollMedia(data []byte) (PollMedia, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9228,6 +9665,9 @@ type PollType interface {
 
 // UnmarshalPollType unmarshals the JSON into the correct concrete implementation of PollType
 func UnmarshalPollType(data []byte) (PollType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9266,6 +9706,9 @@ type PollVoteRestrictionReason interface {
 
 // UnmarshalPollVoteRestrictionReason unmarshals the JSON into the correct concrete implementation of PollVoteRestrictionReason
 func UnmarshalPollVoteRestrictionReason(data []byte) (PollVoteRestrictionReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9351,6 +9794,9 @@ type PremiumFeature interface {
 
 // UnmarshalPremiumFeature unmarshals the JSON into the correct concrete implementation of PremiumFeature
 func UnmarshalPremiumFeature(data []byte) (PremiumFeature, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9567,6 +10013,9 @@ type PremiumLimitType interface {
 
 // UnmarshalPremiumLimitType unmarshals the JSON into the correct concrete implementation of PremiumLimitType
 func UnmarshalPremiumLimitType(data []byte) (PremiumLimitType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9725,6 +10174,9 @@ type PremiumSource interface {
 
 // UnmarshalPremiumSource unmarshals the JSON into the correct concrete implementation of PremiumSource
 func UnmarshalPremiumSource(data []byte) (PremiumSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9788,6 +10240,9 @@ type PremiumStoryFeature interface {
 
 // UnmarshalPremiumStoryFeature unmarshals the JSON into the correct concrete implementation of PremiumStoryFeature
 func UnmarshalPremiumStoryFeature(data []byte) (PremiumStoryFeature, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9858,6 +10313,9 @@ type ProfileTab interface {
 
 // UnmarshalProfileTab unmarshals the JSON into the correct concrete implementation of ProfileTab
 func UnmarshalProfileTab(data []byte) (ProfileTab, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9929,6 +10387,9 @@ type ProxyType interface {
 
 // UnmarshalProxyType unmarshals the JSON into the correct concrete implementation of ProxyType
 func UnmarshalProxyType(data []byte) (ProxyType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -9969,6 +10430,9 @@ type PublicChatType interface {
 
 // UnmarshalPublicChatType unmarshals the JSON into the correct concrete implementation of PublicChatType
 func UnmarshalPublicChatType(data []byte) (PublicChatType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10003,6 +10467,9 @@ type PublicForward interface {
 
 // UnmarshalPublicForward unmarshals the JSON into the correct concrete implementation of PublicForward
 func UnmarshalPublicForward(data []byte) (PublicForward, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10068,6 +10535,8 @@ func UnmarshalPublicForward(data []byte) (PublicForward, error) {
 //   - PushMessageContentSuggestBirthdate
 //   - PushMessageContentSuggestProfilePhoto
 //   - PushMessageContentText
+//   - PushMessageContentTonConnectRequest
+//   - PushMessageContentTonWalletTransfer
 //   - PushMessageContentUpgradedGift
 //   - PushMessageContentVideo
 //   - PushMessageContentVideoChatEnded
@@ -10081,6 +10550,9 @@ type PushMessageContent interface {
 
 // UnmarshalPushMessageContent unmarshals the JSON into the correct concrete implementation of PushMessageContent
 func UnmarshalPushMessageContent(data []byte) (PushMessageContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10328,6 +10800,18 @@ func UnmarshalPushMessageContent(data []byte) (PushMessageContent, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "pushMessageContentTonConnectRequest":
+		var obj PushMessageContentTonConnectRequest
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "pushMessageContentTonWalletTransfer":
+		var obj PushMessageContentTonWalletTransfer
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "pushMessageContentUpgradedGift":
 		var obj PushMessageContentUpgradedGift
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -10380,6 +10864,9 @@ type ReactionNotificationSource interface {
 
 // UnmarshalReactionNotificationSource unmarshals the JSON into the correct concrete implementation of ReactionNotificationSource
 func UnmarshalReactionNotificationSource(data []byte) (ReactionNotificationSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10421,6 +10908,9 @@ type ReactionType interface {
 
 // UnmarshalReactionType unmarshals the JSON into the correct concrete implementation of ReactionType
 func UnmarshalReactionType(data []byte) (ReactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10462,6 +10952,9 @@ type ReactionUnavailabilityReason interface {
 
 // UnmarshalReactionUnavailabilityReason unmarshals the JSON into the correct concrete implementation of ReactionUnavailabilityReason
 func UnmarshalReactionUnavailabilityReason(data []byte) (ReactionUnavailabilityReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10504,6 +10997,9 @@ type ReplyMarkup interface {
 
 // UnmarshalReplyMarkup unmarshals the JSON into the correct concrete implementation of ReplyMarkup
 func UnmarshalReplyMarkup(data []byte) (ReplyMarkup, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10552,6 +11048,9 @@ type ReportChatResult interface {
 
 // UnmarshalReportChatResult unmarshals the JSON into the correct concrete implementation of ReportChatResult
 func UnmarshalReportChatResult(data []byte) (ReportChatResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10606,6 +11105,9 @@ type ReportReason interface {
 
 // UnmarshalReportReason unmarshals the JSON into the correct concrete implementation of ReportReason
 func UnmarshalReportReason(data []byte) (ReportReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10691,6 +11193,9 @@ type ReportSponsoredResult interface {
 
 // UnmarshalReportSponsoredResult unmarshals the JSON into the correct concrete implementation of ReportSponsoredResult
 func UnmarshalReportSponsoredResult(data []byte) (ReportSponsoredResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10744,6 +11249,9 @@ type ReportStoryResult interface {
 
 // UnmarshalReportStoryResult unmarshals the JSON into the correct concrete implementation of ReportStoryResult
 func UnmarshalReportStoryResult(data []byte) (ReportStoryResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10784,6 +11292,9 @@ type ResendCodeReason interface {
 
 // UnmarshalResendCodeReason unmarshals the JSON into the correct concrete implementation of ResendCodeReason
 func UnmarshalResendCodeReason(data []byte) (ResendCodeReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10819,6 +11330,9 @@ type ResetPasswordResult interface {
 
 // UnmarshalResetPasswordResult unmarshals the JSON into the correct concrete implementation of ResetPasswordResult
 func UnmarshalResetPasswordResult(data []byte) (ResetPasswordResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10860,6 +11374,9 @@ type RevenueWithdrawalState interface {
 
 // UnmarshalRevenueWithdrawalState unmarshals the JSON into the correct concrete implementation of RevenueWithdrawalState
 func UnmarshalRevenueWithdrawalState(data []byte) (RevenueWithdrawalState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10901,6 +11418,9 @@ type RichMessageSource interface {
 
 // UnmarshalRichMessageSource unmarshals the JSON into the correct concrete implementation of RichMessageSource
 func UnmarshalRichMessageSource(data []byte) (RichMessageSource, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -10959,6 +11479,7 @@ func UnmarshalRichMessageSource(data []byte) (RichMessageSource, error) {
 //   - RichTextStrikethrough
 //   - RichTextSubscript
 //   - RichTextSuperscript
+//   - RichTextTonAddress
 //   - RichTextUnderline
 //   - RichTextUrl
 //   - RichTexts
@@ -10969,6 +11490,9 @@ type RichText interface {
 
 // UnmarshalRichText unmarshals the JSON into the correct concrete implementation of RichText
 func UnmarshalRichText(data []byte) (RichText, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11138,6 +11662,12 @@ func UnmarshalRichText(data []byte) (RichText, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "richTextTonAddress":
+		var obj RichTextTonAddress
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "richTextUnderline":
 		var obj RichTextUnderline
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -11172,6 +11702,9 @@ type SavedMessagesTopicType interface {
 
 // UnmarshalSavedMessagesTopicType unmarshals the JSON into the correct concrete implementation of SavedMessagesTopicType
 func UnmarshalSavedMessagesTopicType(data []byte) (SavedMessagesTopicType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11212,6 +11745,9 @@ type SearchChatTypeFilter interface {
 
 // UnmarshalSearchChatTypeFilter unmarshals the JSON into the correct concrete implementation of SearchChatTypeFilter
 func UnmarshalSearchChatTypeFilter(data []byte) (SearchChatTypeFilter, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11248,6 +11784,9 @@ type SearchMessagesChatTypeFilter interface {
 
 // UnmarshalSearchMessagesChatTypeFilter unmarshals the JSON into the correct concrete implementation of SearchMessagesChatTypeFilter
 func UnmarshalSearchMessagesChatTypeFilter(data []byte) (SearchMessagesChatTypeFilter, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11311,6 +11850,9 @@ type SearchMessagesFilter interface {
 
 // UnmarshalSearchMessagesFilter unmarshals the JSON into the correct concrete implementation of SearchMessagesFilter
 func UnmarshalSearchMessagesFilter(data []byte) (SearchMessagesFilter, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11448,6 +11990,9 @@ type SecretChatState interface {
 
 // UnmarshalSecretChatState unmarshals the JSON into the correct concrete implementation of SecretChatState
 func UnmarshalSecretChatState(data []byte) (SecretChatState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11488,6 +12033,9 @@ type SentGift interface {
 
 // UnmarshalSentGift unmarshals the JSON into the correct concrete implementation of SentGift
 func UnmarshalSentGift(data []byte) (SentGift, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11537,6 +12085,9 @@ type SessionDeviceType interface {
 
 // UnmarshalSessionDeviceType unmarshals the JSON into the correct concrete implementation of SessionDeviceType
 func UnmarshalSessionDeviceType(data []byte) (SessionDeviceType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11661,6 +12212,9 @@ type SessionType interface {
 
 // UnmarshalSessionType unmarshals the JSON into the correct concrete implementation of SessionType
 func UnmarshalSessionType(data []byte) (SessionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11714,6 +12268,9 @@ type SettingsSection interface {
 
 // UnmarshalSettingsSection unmarshals the JSON into the correct concrete implementation of SettingsSection
 func UnmarshalSettingsSection(data []byte) (SettingsSection, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11863,6 +12420,9 @@ type SpeechRecognitionResult interface {
 
 // UnmarshalSpeechRecognitionResult unmarshals the JSON into the correct concrete implementation of SpeechRecognitionResult
 func UnmarshalSpeechRecognitionResult(data []byte) (SpeechRecognitionResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11903,6 +12463,9 @@ type StarSubscriptionType interface {
 
 // UnmarshalStarSubscriptionType unmarshals the JSON into the correct concrete implementation of StarSubscriptionType
 func UnmarshalStarSubscriptionType(data []byte) (StarSubscriptionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -11937,6 +12500,9 @@ type StartLiveStoryResult interface {
 
 // UnmarshalStartLiveStoryResult unmarshals the JSON into the correct concrete implementation of StartLiveStoryResult
 func UnmarshalStartLiveStoryResult(data []byte) (StartLiveStoryResult, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12014,6 +12580,9 @@ type StarTransactionType interface {
 
 // UnmarshalStarTransactionType unmarshals the JSON into the correct concrete implementation of StarTransactionType
 func UnmarshalStarTransactionType(data []byte) (StarTransactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12307,6 +12876,9 @@ type StatisticalGraph interface {
 
 // UnmarshalStatisticalGraph unmarshals the JSON into the correct concrete implementation of StatisticalGraph
 func UnmarshalStatisticalGraph(data []byte) (StatisticalGraph, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12348,6 +12920,9 @@ type StickerFormat interface {
 
 // UnmarshalStickerFormat unmarshals the JSON into the correct concrete implementation of StickerFormat
 func UnmarshalStickerFormat(data []byte) (StickerFormat, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12389,6 +12964,9 @@ type StickerFullType interface {
 
 // UnmarshalStickerFullType unmarshals the JSON into the correct concrete implementation of StickerFullType
 func UnmarshalStickerFullType(data []byte) (StickerFullType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12430,6 +13008,9 @@ type StickerType interface {
 
 // UnmarshalStickerType unmarshals the JSON into the correct concrete implementation of StickerType
 func UnmarshalStickerType(data []byte) (StickerType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12475,6 +13056,9 @@ type StorePaymentPurpose interface {
 
 // UnmarshalStorePaymentPurpose unmarshals the JSON into the correct concrete implementation of StorePaymentPurpose
 func UnmarshalStorePaymentPurpose(data []byte) (StorePaymentPurpose, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12539,6 +13123,9 @@ type StoreTransaction interface {
 
 // UnmarshalStoreTransaction unmarshals the JSON into the correct concrete implementation of StoreTransaction
 func UnmarshalStoreTransaction(data []byte) (StoreTransaction, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12578,6 +13165,9 @@ type StoryAreaType interface {
 
 // UnmarshalStoryAreaType unmarshals the JSON into the correct concrete implementation of StoryAreaType
 func UnmarshalStoryAreaType(data []byte) (StoryAreaType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12644,6 +13234,9 @@ type StoryContent interface {
 
 // UnmarshalStoryContent unmarshals the JSON into the correct concrete implementation of StoryContent
 func UnmarshalStoryContent(data []byte) (StoryContent, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12692,6 +13285,9 @@ type StoryContentType interface {
 
 // UnmarshalStoryContentType unmarshals the JSON into the correct concrete implementation of StoryContentType
 func UnmarshalStoryContentType(data []byte) (StoryContentType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12739,6 +13335,9 @@ type StoryInteractionType interface {
 
 // UnmarshalStoryInteractionType unmarshals the JSON into the correct concrete implementation of StoryInteractionType
 func UnmarshalStoryInteractionType(data []byte) (StoryInteractionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12779,6 +13378,9 @@ type StoryList interface {
 
 // UnmarshalStoryList unmarshals the JSON into the correct concrete implementation of StoryList
 func UnmarshalStoryList(data []byte) (StoryList, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12813,6 +13415,9 @@ type StoryOrigin interface {
 
 // UnmarshalStoryOrigin unmarshals the JSON into the correct concrete implementation of StoryOrigin
 func UnmarshalStoryOrigin(data []byte) (StoryOrigin, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12849,6 +13454,9 @@ type StoryPrivacySettings interface {
 
 // UnmarshalStoryPrivacySettings unmarshals the JSON into the correct concrete implementation of StoryPrivacySettings
 func UnmarshalStoryPrivacySettings(data []byte) (StoryPrivacySettings, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -12903,6 +13511,7 @@ func UnmarshalStoryPrivacySettings(data []byte) (StoryPrivacySettings, error) {
 //   - SuggestedActionSubscribeToAnnualPremium
 //   - SuggestedActionUpgradePremium
 //   - SuggestedActionViewChecksHint
+//   - SuggestedActionViewFirstTonWalletTransferHint
 type SuggestedAction interface {
 	TlObject
 	suggestedAction()
@@ -12910,6 +13519,9 @@ type SuggestedAction interface {
 
 // UnmarshalSuggestedAction unmarshals the JSON into the correct concrete implementation of SuggestedAction
 func UnmarshalSuggestedAction(data []byte) (SuggestedAction, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13019,6 +13631,12 @@ func UnmarshalSuggestedAction(data []byte) (SuggestedAction, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "suggestedActionViewFirstTonWalletTransferHint":
+		var obj SuggestedActionViewFirstTonWalletTransferHint
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	default:
 		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
 	}
@@ -13034,6 +13652,9 @@ type SuggestedPostPrice interface {
 
 // UnmarshalSuggestedPostPrice unmarshals the JSON into the correct concrete implementation of SuggestedPostPrice
 func UnmarshalSuggestedPostPrice(data []byte) (SuggestedPostPrice, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13068,6 +13689,9 @@ type SuggestedPostRefundReason interface {
 
 // UnmarshalSuggestedPostRefundReason unmarshals the JSON into the correct concrete implementation of SuggestedPostRefundReason
 func UnmarshalSuggestedPostRefundReason(data []byte) (SuggestedPostRefundReason, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13103,6 +13727,9 @@ type SuggestedPostState interface {
 
 // UnmarshalSuggestedPostState unmarshals the JSON into the correct concrete implementation of SuggestedPostState
 func UnmarshalSuggestedPostState(data []byte) (SuggestedPostState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13149,6 +13776,9 @@ type SupergroupMembersFilter interface {
 
 // UnmarshalSupergroupMembersFilter unmarshals the JSON into the correct concrete implementation of SupergroupMembersFilter
 func UnmarshalSupergroupMembersFilter(data []byte) (SupergroupMembersFilter, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13220,6 +13850,9 @@ type TargetChat interface {
 
 // UnmarshalTargetChat unmarshals the JSON into the correct concrete implementation of TargetChat
 func UnmarshalTargetChat(data []byte) (TargetChat, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13265,6 +13898,9 @@ type TelegramPaymentPurpose interface {
 
 // UnmarshalTelegramPaymentPurpose unmarshals the JSON into the correct concrete implementation of TelegramPaymentPurpose
 func UnmarshalTelegramPaymentPurpose(data []byte) (TelegramPaymentPurpose, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13341,6 +13977,7 @@ func UnmarshalTelegramPaymentPurpose(data []byte) (TelegramPaymentPurpose, error
 //   - TextEntityTypeSpoiler
 //   - TextEntityTypeStrikethrough
 //   - TextEntityTypeTextUrl
+//   - TextEntityTypeTonAddress
 //   - TextEntityTypeUnderline
 //   - TextEntityTypeUrl
 type TextEntityType interface {
@@ -13350,6 +13987,9 @@ type TextEntityType interface {
 
 // UnmarshalTextEntityType unmarshals the JSON into the correct concrete implementation of TextEntityType
 func UnmarshalTextEntityType(data []byte) (TextEntityType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13483,6 +14123,12 @@ func UnmarshalTextEntityType(data []byte) (TextEntityType, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "textEntityTypeTonAddress":
+		var obj TextEntityTypeTonAddress
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "textEntityTypeUnderline":
 		var obj TextEntityTypeUnderline
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -13510,6 +14156,9 @@ type TextParseMode interface {
 
 // UnmarshalTextParseMode unmarshals the JSON into the correct concrete implementation of TextParseMode
 func UnmarshalTextParseMode(data []byte) (TextParseMode, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13549,6 +14198,9 @@ type ThumbnailFormat interface {
 
 // UnmarshalThumbnailFormat unmarshals the JSON into the correct concrete implementation of ThumbnailFormat
 func UnmarshalThumbnailFormat(data []byte) (ThumbnailFormat, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13615,6 +14267,9 @@ type TMeUrlType interface {
 
 // UnmarshalTMeUrlType unmarshals the JSON into the correct concrete implementation of TMeUrlType
 func UnmarshalTMeUrlType(data []byte) (TMeUrlType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13651,6 +14306,226 @@ func UnmarshalTMeUrlType(data []byte) (TMeUrlType, error) {
 	}
 }
 
+// TonCenterApiRequestType Describes state of active stories posted by a chat
+//   - TonCenterApiRequestTypeGet
+//   - TonCenterApiRequestTypePost
+type TonCenterApiRequestType interface {
+	TlObject
+	tonCenterApiRequestType()
+}
+
+// UnmarshalTonCenterApiRequestType unmarshals the JSON into the correct concrete implementation of TonCenterApiRequestType
+func UnmarshalTonCenterApiRequestType(data []byte) (TonCenterApiRequestType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonCenterApiRequestTypeGet":
+		var obj TonCenterApiRequestTypeGet
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonCenterApiRequestTypePost":
+		var obj TonCenterApiRequestTypePost
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonConnectConnectItem Represents a data item to share with a dApp
+//   - TonConnectConnectItemAddress
+//   - TonConnectConnectItemProof
+type TonConnectConnectItem interface {
+	TlObject
+	tonConnectConnectItem()
+}
+
+// UnmarshalTonConnectConnectItem unmarshals the JSON into the correct concrete implementation of TonConnectConnectItem
+func UnmarshalTonConnectConnectItem(data []byte) (TonConnectConnectItem, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonConnectConnectItemAddress":
+		var obj TonConnectConnectItemAddress
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectConnectItemProof":
+		var obj TonConnectConnectItemProof
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonConnectManifest Describes manifest of the dApp that is being connected using TON Connect
+//   - TonConnectManifestFailed
+//   - TonConnectManifestInfo
+//   - TonConnectManifestInvalid
+//   - TonConnectManifestPending
+type TonConnectManifest interface {
+	TlObject
+	tonConnectManifest()
+}
+
+// UnmarshalTonConnectManifest unmarshals the JSON into the correct concrete implementation of TonConnectManifest
+func UnmarshalTonConnectManifest(data []byte) (TonConnectManifest, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonConnectManifestFailed":
+		var obj TonConnectManifestFailed
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectManifestInfo":
+		var obj TonConnectManifestInfo
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectManifestInvalid":
+		var obj TonConnectManifestInvalid
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectManifestPending":
+		var obj TonConnectManifestPending
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonConnectRequestState Describes state of a request received from a dApp through TON Connect
+//   - TonConnectRequestStateAccepted
+//   - TonConnectRequestStatePending
+//   - TonConnectRequestStateRejected
+type TonConnectRequestState interface {
+	TlObject
+	tonConnectRequestState()
+}
+
+// UnmarshalTonConnectRequestState unmarshals the JSON into the correct concrete implementation of TonConnectRequestState
+func UnmarshalTonConnectRequestState(data []byte) (TonConnectRequestState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonConnectRequestStateAccepted":
+		var obj TonConnectRequestStateAccepted
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectRequestStatePending":
+		var obj TonConnectRequestStatePending
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectRequestStateRejected":
+		var obj TonConnectRequestStateRejected
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonConnectSessionState Describes state of a TON Connect session
+//   - TonConnectSessionStateClosed
+//   - TonConnectSessionStateClosing
+//   - TonConnectSessionStatePending
+//   - TonConnectSessionStateReady
+type TonConnectSessionState interface {
+	TlObject
+	tonConnectSessionState()
+}
+
+// UnmarshalTonConnectSessionState unmarshals the JSON into the correct concrete implementation of TonConnectSessionState
+func UnmarshalTonConnectSessionState(data []byte) (TonConnectSessionState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonConnectSessionStateClosed":
+		var obj TonConnectSessionStateClosed
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectSessionStateClosing":
+		var obj TonConnectSessionStateClosing
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectSessionStatePending":
+		var obj TonConnectSessionStatePending
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonConnectSessionStateReady":
+		var obj TonConnectSessionStateReady
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
 // TonTransactionType Describes type of transaction with TON Grams
 //   - TonTransactionTypeFragmentDeposit
 //   - TonTransactionTypeFragmentWithdrawal
@@ -13668,6 +14543,9 @@ type TonTransactionType interface {
 
 // UnmarshalTonTransactionType unmarshals the JSON into the correct concrete implementation of TonTransactionType
 func UnmarshalTonTransactionType(data []byte) (TonTransactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13734,6 +14612,131 @@ func UnmarshalTonTransactionType(data []byte) (TonTransactionType, error) {
 	}
 }
 
+// TonWalletTransactionState Describes state of a transaction with a TON wallet
+//   - TonWalletTransactionStateFailed
+//   - TonWalletTransactionStateSucceeded
+type TonWalletTransactionState interface {
+	TlObject
+	tonWalletTransactionState()
+}
+
+// UnmarshalTonWalletTransactionState unmarshals the JSON into the correct concrete implementation of TonWalletTransactionState
+func UnmarshalTonWalletTransactionState(data []byte) (TonWalletTransactionState, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonWalletTransactionStateFailed":
+		var obj TonWalletTransactionStateFailed
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonWalletTransactionStateSucceeded":
+		var obj TonWalletTransactionStateSucceeded
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonWalletTransactionType Describes type of transaction with a TON wallet
+//   - TonWalletTransactionTypeKeyChange
+//   - TonWalletTransactionTypeNftTransfer
+//   - TonWalletTransactionTypeOnRampDeposit
+//   - TonWalletTransactionTypeTransfer
+type TonWalletTransactionType interface {
+	TlObject
+	tonWalletTransactionType()
+}
+
+// UnmarshalTonWalletTransactionType unmarshals the JSON into the correct concrete implementation of TonWalletTransactionType
+func UnmarshalTonWalletTransactionType(data []byte) (TonWalletTransactionType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonWalletTransactionTypeKeyChange":
+		var obj TonWalletTransactionTypeKeyChange
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonWalletTransactionTypeNftTransfer":
+		var obj TonWalletTransactionTypeNftTransfer
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonWalletTransactionTypeOnRampDeposit":
+		var obj TonWalletTransactionTypeOnRampDeposit
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonWalletTransactionTypeTransfer":
+		var obj TonWalletTransactionTypeTransfer
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
+// TonWalletTransferReceiver Represents expected receiver of a TON wallet transfer
+//   - TonWalletTransferReceiverAddress
+//   - TonWalletTransferReceiverUser
+type TonWalletTransferReceiver interface {
+	TlObject
+	tonWalletTransferReceiver()
+}
+
+// UnmarshalTonWalletTransferReceiver unmarshals the JSON into the correct concrete implementation of TonWalletTransferReceiver
+func UnmarshalTonWalletTransferReceiver(data []byte) (TonWalletTransferReceiver, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
+	var typeObj struct {
+		Type string `json:"@type"`
+	}
+	if err := json.Unmarshal(data, &typeObj); err != nil {
+		return nil, err
+	}
+	switch typeObj.Type {
+	case "tonWalletTransferReceiverAddress":
+		var obj TonWalletTransferReceiverAddress
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "tonWalletTransferReceiverUser":
+		var obj TonWalletTransferReceiverUser
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	default:
+		return nil, fmt.Errorf("unknown type: %s", typeObj.Type)
+	}
+}
+
 // TopChatCategory Represents the categories of chats for which a list of frequently used chats can be retrieved
 //   - TopChatCategoryBots
 //   - TopChatCategoryCalls
@@ -13751,6 +14754,9 @@ type TopChatCategory interface {
 
 // UnmarshalTopChatCategory unmarshals the JSON into the correct concrete implementation of TopChatCategory
 func UnmarshalTopChatCategory(data []byte) (TopChatCategory, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13827,6 +14833,9 @@ type TransactionDirection interface {
 
 // UnmarshalTransactionDirection unmarshals the JSON into the correct concrete implementation of TransactionDirection
 func UnmarshalTransactionDirection(data []byte) (TransactionDirection, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -13858,6 +14867,7 @@ func UnmarshalTransactionDirection(data []byte) (TransactionDirection, error) {
 //   - UpdateActiveLiveLocationMessages
 //   - UpdateActiveNotifications
 //   - UpdateAgeVerificationParameters
+//   - UpdateAllowedBotUsernamePremiumSuffixes
 //   - UpdateAnimatedEmojiMessageClicked
 //   - UpdateAnimationSearchParameters
 //   - UpdateApplicationRecaptchaVerificationRequired
@@ -14027,6 +15037,10 @@ func UnmarshalTransactionDirection(data []byte) (TransactionDirection, error) {
 //   - UpdateSupergroupFullInfo
 //   - UpdateTermsOfService
 //   - UpdateTextCompositionStyles
+//   - UpdateTonWalletGaslessTransfersInfo
+//   - UpdateTonWalletState
+//   - UpdateTonWalletTonConnectSession
+//   - UpdateTonWalletTonConnectSessionDisconnectRequired
 //   - UpdateTopicMessageCount
 //   - UpdateTrendingStickerSets
 //   - UpdateTrustedMiniAppBots
@@ -14048,6 +15062,9 @@ type Update interface {
 
 // UnmarshalUpdate unmarshals the JSON into the correct concrete implementation of Update
 func UnmarshalUpdate(data []byte) (Update, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -14087,6 +15104,12 @@ func UnmarshalUpdate(data []byte) (Update, error) {
 		return &obj, nil
 	case "updateAgeVerificationParameters":
 		var obj UpdateAgeVerificationParameters
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "updateAllowedBotUsernamePremiumSuffixes":
+		var obj UpdateAllowedBotUsernamePremiumSuffixes
 		if err := json.Unmarshal(data, &obj); err != nil {
 			return nil, err
 		}
@@ -15105,6 +16128,30 @@ func UnmarshalUpdate(data []byte) (Update, error) {
 			return nil, err
 		}
 		return &obj, nil
+	case "updateTonWalletGaslessTransfersInfo":
+		var obj UpdateTonWalletGaslessTransfersInfo
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "updateTonWalletState":
+		var obj UpdateTonWalletState
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "updateTonWalletTonConnectSession":
+		var obj UpdateTonWalletTonConnectSession
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
+	case "updateTonWalletTonConnectSessionDisconnectRequired":
+		var obj UpdateTonWalletTonConnectSessionDisconnectRequired
+		if err := json.Unmarshal(data, &obj); err != nil {
+			return nil, err
+		}
+		return &obj, nil
 	case "updateTopicMessageCount":
 		var obj UpdateTopicMessageCount
 		if err := json.Unmarshal(data, &obj); err != nil {
@@ -15205,6 +16252,9 @@ type UpgradedGiftAttributeId interface {
 
 // UnmarshalUpgradedGiftAttributeId unmarshals the JSON into the correct concrete implementation of UpgradedGiftAttributeId
 func UnmarshalUpgradedGiftAttributeId(data []byte) (UpgradedGiftAttributeId, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15248,6 +16298,9 @@ type UpgradedGiftAttributeRarity interface {
 
 // UnmarshalUpgradedGiftAttributeRarity unmarshals the JSON into the correct concrete implementation of UpgradedGiftAttributeRarity
 func UnmarshalUpgradedGiftAttributeRarity(data []byte) (UpgradedGiftAttributeRarity, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15305,6 +16358,9 @@ type UpgradedGiftOrigin interface {
 
 // UnmarshalUpgradedGiftOrigin unmarshals the JSON into the correct concrete implementation of UpgradedGiftOrigin
 func UnmarshalUpgradedGiftOrigin(data []byte) (UpgradedGiftOrigin, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15381,6 +16437,9 @@ type UserPrivacySetting interface {
 
 // UnmarshalUserPrivacySetting unmarshals the JSON into the correct concrete implementation of UserPrivacySetting
 func UnmarshalUserPrivacySetting(data []byte) (UserPrivacySetting, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15496,6 +16555,9 @@ type UserPrivacySettingRule interface {
 
 // UnmarshalUserPrivacySettingRule unmarshals the JSON into the correct concrete implementation of UserPrivacySettingRule
 func UnmarshalUserPrivacySettingRule(data []byte) (UserPrivacySettingRule, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15588,6 +16650,9 @@ type UserStatus interface {
 
 // UnmarshalUserStatus unmarshals the JSON into the correct concrete implementation of UserStatus
 func UnmarshalUserStatus(data []byte) (UserStatus, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15648,6 +16713,9 @@ type UserType interface {
 
 // UnmarshalUserType unmarshals the JSON into the correct concrete implementation of UserType
 func UnmarshalUserType(data []byte) (UserType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15694,6 +16762,9 @@ type VectorPathCommand interface {
 
 // UnmarshalVectorPathCommand unmarshals the JSON into the correct concrete implementation of VectorPathCommand
 func UnmarshalVectorPathCommand(data []byte) (VectorPathCommand, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15729,6 +16800,9 @@ type WebAppOpenMode interface {
 
 // UnmarshalWebAppOpenMode unmarshals the JSON into the correct concrete implementation of WebAppOpenMode
 func UnmarshalWebAppOpenMode(data []byte) (WebAppOpenMode, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
@@ -15769,6 +16843,9 @@ type WebBrowserType interface {
 
 // UnmarshalWebBrowserType unmarshals the JSON into the correct concrete implementation of WebBrowserType
 func UnmarshalWebBrowserType(data []byte) (WebBrowserType, error) {
+	if bytes.Equal(bytes.TrimSpace(data), []byte("null")) {
+		return nil, nil
+	}
 	var typeObj struct {
 		Type string `json:"@type"`
 	}
