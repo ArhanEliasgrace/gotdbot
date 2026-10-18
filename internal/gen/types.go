@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"regexp"
 	"sort"
 	"strings"
 	"unicode"
@@ -113,8 +112,8 @@ func generateObjects(types []TLType, classes map[string]*TLClass) {
 			// Check if type corresponds to a class
 			isClass := false
 			typeName := p.Type
-			if strings.HasPrefix(typeName, "vector<") {
-				typeName = strings.TrimSuffix(strings.TrimPrefix(typeName, "vector<"), ">")
+			if after, ok := strings.CutPrefix(typeName, "vector<"); ok {
+				typeName = strings.TrimSuffix(after, ">")
 			}
 			if _, ok := classes[typeName]; ok {
 				isClass = true
@@ -185,8 +184,8 @@ func generateObjects(types []TLType, classes map[string]*TLClass) {
 
 				typeName := p.Type
 				isVector := false
-				if strings.HasPrefix(typeName, "vector<") {
-					typeName = strings.TrimSuffix(strings.TrimPrefix(typeName, "vector<"), ">")
+				if after, ok := strings.CutPrefix(typeName, "vector<"); ok {
+					typeName = strings.TrimSuffix(after, ">")
 					isVector = true
 				}
 				className := toCamelCase(typeName)
@@ -300,20 +299,14 @@ func generateOptions(functions []TLType, classes map[string]*TLClass) {
 
 	for _, fn := range functions {
 		methodName := clientMethodName(fn.Name)
-		hasOptional := false
-		for _, p := range fn.Params {
-			if p.IsOptional || p.Type == "Bool" {
-				hasOptional = true
-				break
-			}
-		}
+		hasOptional := hasOptionParameters(fn)
 
 		if hasOptional {
 			optsStructName := methodName + "Opts"
 			fmt.Fprintf(&sb, "// %s contains optional parameters for %s\n", optsStructName, methodName)
 			fmt.Fprintf(&sb, "type %s struct {\n", optsStructName)
 			for _, p := range fn.Params {
-				if p.IsOptional || p.Type == "Bool" {
+				if isOptionParameter(fn, p) {
 					fmt.Fprintf(&sb, "\t// %s\n", formatDesc(p.Description))
 					goType := toGoType(p.Type, classes)
 					fieldName := toCamelCase(p.Name)
@@ -348,15 +341,6 @@ func generateTDLibOptions(options map[string]*OptionDef) {
 		}
 	}
 	sort.Strings(writableOptions)
-
-	contentBytes, err := os.ReadFile("client_opts.go")
-	if err != nil {
-		log.Fatal(err)
-	}
-	content := string(contentBytes)
-
-	structRegex := regexp.MustCompile(`(?s)(// TDLibOptions.*?\n)?type TDLibOptions struct\s*\{`)
-	forEachRegex := regexp.MustCompile(`(?s)(// forEachSet.*?\n)?func\s*\(o\s*\*TDLibOptions\)\s*forEachSet\s*\(fn func\(name string, value interface\{\}\)\)\s*\{`)
 
 	var structSb, forEachSb strings.Builder
 	structSb.WriteString("// TDLibOptions contains TDLib options that can be set\ntype TDLibOptions struct {\n")
@@ -395,34 +379,8 @@ func generateTDLibOptions(options map[string]*OptionDef) {
 	}
 	forEachSb.WriteString("}")
 
-	newContent := content
-	if loc := structRegex.FindStringIndex(newContent); loc != nil {
-		end := findBalancedBrace(newContent, loc[1]-1)
-		if end != -1 {
-			for end+1 < len(newContent) && (newContent[end+1] == '\n' || newContent[end+1] == '\r') {
-				end++
-			}
-			newContent = newContent[:loc[0]] + structSb.String() + "\n\n" + newContent[end+1:]
-		}
-	}
-
-	if loc := forEachRegex.FindStringIndex(newContent); loc != nil {
-		end := findBalancedBrace(newContent, loc[1]-1)
-		if end != -1 {
-			for end+1 < len(newContent) && (newContent[end+1] == '\n' || newContent[end+1] == '\r') {
-				end++
-			}
-			newContent = newContent[:loc[0]] + forEachSb.String() + "\n\n" + newContent[end+1:]
-		}
-	} else if structLoc := structRegex.FindStringIndex(newContent); structLoc != nil {
-		structEnd := findBalancedBrace(newContent, structLoc[1]-1)
-		if structEnd != -1 {
-			insertAt := structEnd + 1
-			newContent = newContent[:insertAt] + "\n\n" + forEachSb.String() + newContent[insertAt:]
-		}
-	}
-
-	if err := os.WriteFile("client_opts.go", []byte(newContent), 0644); err != nil {
+	content := header + "package gotdbot\n\n" + structSb.String() + "\n\n" + forEachSb.String() + "\n"
+	if err := os.WriteFile("gen_tdlib_options.go", []byte(content), 0644); err != nil {
 		log.Fatal(err)
 	}
 }

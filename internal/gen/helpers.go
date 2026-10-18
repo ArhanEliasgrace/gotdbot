@@ -45,7 +45,7 @@ func generateHelpers(types []TLType, functions []TLType, classes map[string]*TLC
 			matchedCount := 0
 
 			for _, param := range fn.Params {
-				if param.IsOptional || param.Type == "Bool" {
+				if isOptionParameter(fn, param) {
 					continue
 				}
 
@@ -147,7 +147,7 @@ func generateHelperMethod(sb *strings.Builder, t TLType, fn TLType, matches map[
 	var callArgs []string
 
 	for _, p := range fn.Params {
-		if p.IsOptional || p.Type == "Bool" {
+		if isOptionParameter(fn, p) {
 			continue
 		}
 
@@ -168,13 +168,7 @@ func generateHelperMethod(sb *strings.Builder, t TLType, fn TLType, matches map[
 		}
 	}
 
-	hasOptional := false
-	for _, p := range fn.Params {
-		if p.IsOptional || p.Type == "Bool" {
-			hasOptional = true
-			break
-		}
-	}
+	hasOptional := hasOptionParameters(fn)
 
 	optsStructName := clientMethodName + "Opts"
 	if hasOptional {
@@ -195,7 +189,6 @@ func generateHelperMethod(sb *strings.Builder, t TLType, fn TLType, matches map[
 	receiverVar := strings.ToLower(structName[:1])
 
 	fmt.Fprintf(sb, "// %s %s\n", helperName, formatDesc(fn.Description))
-	fmt.Fprintf(sb, "// It is a helper method for Client.%s\n", clientMethodName)
 
 	if isOk {
 		fmt.Fprintf(sb, "func (%s *%s) %s(client *Client, %s) error {\n",
